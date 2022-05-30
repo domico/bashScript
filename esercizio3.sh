@@ -7,6 +7,21 @@ check_root(){
 	fi
 }
 
+check_sbin(){
+	if ! [ -f /usr/sbin/esercizio3.sh ]; then
+		cp ./esercizio3.sh /usr/sbin/
+		echo "file non presente"
+	fi
+}
+
+check_sys_job(){
+	if ! [ -f /etc/cron.d/check_size ]; then
+		touch /etc/cron.d/check_size
+		echo "*/1 * * * * root /usr/sbin/esercizio3.sh" > /etc/cron.d/check_size
+		systemctl daemon-reload
+	fi
+}
+
 check_users_home(){
 	users=( $(ls /home) )
 	#echo "${users[@]}"
@@ -16,17 +31,15 @@ check_users_home(){
 get_home_size(){
 	sizes=()
 	for user in ${users[@]}; do
-		entry=( $(ls -ld /home/"${user}") )  
-		sizes+=(${entry[4]})			#get size of home's dir for each user
+		entry=( $(du -s /home/"${user}") )  
+		sizes+=( $(echo ""${entry}"*1024" | bc) )			#get size of home's dir for each user
+		echo "${entry}"
 	done
 }
 
 check_home_size(){
 	max_dim=$( echo "1024*1024*1024" | bc)
 	for index in $(seq 0 $((${#users[@]} - 1))); do
-		#echo "Iterazione: "${index}""
-		#echo "${sizes[$index]}"
-		#echo "${max_dim}" 
 		if [ "${sizes[$index]}" -ge "${max_dim}" ];then
 			echo "Sending email to "$user"@quota.com from admin@quota.com" 
 		else
@@ -38,6 +51,8 @@ check_home_size(){
 
 ######################### Main ##############################
 check_root
+check_sbin
+check_sys_job
 check_users_home
 get_home_size
 check_home_size
