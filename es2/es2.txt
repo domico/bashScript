@@ -1,0 +1,21 @@
+es 2.
+
+DNS
+https://opensource.com/article/17/4/build-your-own-name-server
+
+DHCP
+https://www.tecmint.com/install-dhcp-server-client-on-centos-ubuntu/
+
+NTP
+https://www.thegeekdiary.com/centos-rhel-how-to-configure-ntp-server-and-client/
+
+listen-on port 53 { 127.0.0.1; 192.168.1.21}; //Aggiungendo l'ip locale, do la possibilità agli altri pc sulla rete di accedere
+        //listen-on-v6 port 53 { ::1; };
+        forwarders { 8.8.8.8; 8.8.4.4; }; //dove prendere gli IP se non sono salvati in locale
+        directory       "/var/named";
+        dump-file       "/var/named/data/cache_dump.db";
+        statistics-file "/var/named/data/named_stats.txt";
+        memstatistics-file "/var/named/data/named_mem_stats.txt";
+        recursing-file  "/var/named/data/named.recursing";
+        secroots-file   "/var/named/data/named.secroots";
+        allow-query     { localhost; };

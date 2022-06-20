@@ -1,0 +1,81 @@
+-------------------------- DNS --------------------------
+- yum install named
+
+systemctl enable named 
+systemctl start named
+
+files involved:
+- /etc/hosts
+- /etc/resolv.conf
+- /etc/named.conf
+- /var/named/example.com.zone
+- /var/named/example.com.rev
+
+firewalld rules:
+- /usr/lib/firewalld/services/dns.xml
+
+- firewall-cmd --permanent --add-service=dns
+
+-------------------------- DHCP -------------------------
+
+- yum install dhcp 
+- systemctl start dhcpd
+- systemctl enable dhcpd
+
+
+files involved:
+- /etc/dhcp/dhcpd.conf
+
+firewalld rules:
+
+- firewall-cmd --permanent --add-service=dhcp
+- firewall-cmd --reload
+
+--------------------------- NTP --------------------------
+
+-----Server
+- yum install ntp
+
+files involved:
+- /etc/ntp.conf
+
+systemctl enable ntpq
+systemctl start/restart ntpq
+
+firewall-cmd --permanent --add-service=ntp
+
+-----Client
+
+- yum install ntp
+- systemctl start ntpd
+- ntpdate -u -s dns.example.com
+- systemctl restart ntpd
+- timedatectl
+
+------------------------- LAMP ---------------------------
+- yum install httpd
+- systemctl start httpd
+- systemctl enable httpd
+- firewall-cmd --add-service=http
+
+- yum install mariadb-server mariadb
+- systemctl start mariadb
+- systemctl enable mariadb
+- firewall-cmd --add-service=mysql
+
+- yum install php php-mysql
+- systemctl restart httpd
+- firewall-cmd --reload
+
+DB Creation:
+
+- CREATE DATABASE example_database;
+- GRANT ALL ON example_database.* TO 'example_user'@'localhost' IDENTIFIED BY 'password' WITH GRANT OPTION;
+-FLUSH PRIVILEGES;
+
+file involved: 
+
+- /var/www/http/connection.php
+- /var/www/html/file_download-php
+- /var/www/html/authentication.php
+- /var/www/html/download.php

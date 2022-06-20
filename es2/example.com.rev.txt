@@ -1,0 +1,19 @@
+; Authoritative data for example.com  reverse zone
+;
+$TTL 1D
+@   IN SOA  test1.example.com   root.test1.example.com. (
+                                        2017031501      ; serial
+                                        1D              ; refresh
+                                        1H              ; retry
+                                        1W              ; expire
+                                        3H )            ; minimum
+
+@               IN      NS      dom.example.com.
+example.com.    IN      NS      dom.example.com.
+21              IN      PTR     dom.example.com.
+21              IN      PTR     ntp.example.com.
+21              IN      PTR     dhcp.example.com.
+71              IN      PTR     host1.example.com.
+72              IN      PTR     host2.example.com.
+73              IN      PTR     host3.example.com.
+74              IN      PTR     host4.example.com.

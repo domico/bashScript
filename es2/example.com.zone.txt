@@ -1,0 +1,27 @@
+; Authoritative data for example.com zone                                    
+;                                                                            
+$ORIGIN         example.com.                                                 
+                                                                             
+$TTL 1D                                                                      
+@   IN SOA  dom.example.com   dom_ico.example.com. (                         
+                                       2017031301      ; serial              
+                                       1D              ; refresh             
+                                       1H              ; retry               
+                                       1W              ; expire              
+                                       3H )            ; minimum             
+                                                                             
+                                                                             
+                                                                             
+                        IN      NS      dom.example.com.                     
+                                                                             
+dom                     IN      A       192.168.1.21                         
+host1                   IN      A       192.168.1.71                         
+host2                   IN      A       192.168.1.72                         
+host3                   IN      A       192.168.1.73                         
+host4                   IN      A       192.168.1.74                         
+                                                                             
+dhcp                    IN      CNAME   dom                                  
+ntp                     IN      CNAME   dom                                  
+dns                     IN      CNAME   dom                                  
+                                                                             
+                                                                             
