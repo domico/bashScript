@@ -1,0 +1,24 @@
+; Authoritative data for example.com zone
+;
+$ORIGIN         uno.server.local.
+$TTL 1D
+@   IN SOA  dom.uno.server.local.  dom_ico.uno.server.local (
+                                       2017091     ; seriali
+                                       1D              ; refresh
+                                       1H              ; retry
+                                       1W              ; expire
+                                       3H )            ; minimum
+
+
+
+                        IN      NS      dom.uno.server.local.
+                        IN      NS      server1dns.uno.server.local.
+                        IN      NS      server2dns.uno.server.local.
+
+@                       IN      A       192.168.7.1
+dom                     IN      A       192.168.7.1
+server1dns              IN      A       192.168.7.33
+server2dns              IN      A       192.168.7.31
+
+
+host1                   IN      A       192.168.7.71

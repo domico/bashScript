@@ -1,0 +1,37 @@
+# dhcpd.conf
+#
+# Sample configuration file for ISC dhcpd
+#
+
+# option definitions common to all supported networks...
+#option domain-name "example.com";
+#option domain-name-servers ns1.example.com, ns2.example.com;
+
+default-lease-time 600;
+max-lease-time 7200;
+
+# Use this to enble / disable dynamic dns updates globally.
+#ddns-update-style none;
+
+# If this DHCP server is the official DHCP server for the local
+# network, the authoritative directive should be uncommented.
+authoritative;
+
+# Use this to send dhcp log messages to a different log file (you also
+# have to hack syslog.conf to complete the redirection).
+log-facility local7;
+
+# Config for PXE Boot configuration
+allow booting;
+allow bootp;
+next-server 192.168.7.1; #TFTP
+filename "pxelinux.0";
+
+subnet 192.168.7.0 netmask 255.255.255.0 {
+        option routers                  192.168.7.1;
+        option broadcast-address        192.168.7.255;
+        option domain-name              "example.com";
+        option domain-name-servers      192.168.7.1;
+        option ntp-servers              192.168.7.1;
+        range 192.168.7.10 192.168.7.200;
+}

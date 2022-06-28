@@ -1,0 +1,7 @@
+<VirtualHost *:80>
+    ServerName uno.server.local
+    ServerAlias www.uno.server.local
+    DocumentRoot /var/www/uno.server.local/public_html
+    ErrorLog /var/www/uno.server.local/error.log
+    CustomLog /var/www/uno.server.local/requests.log combined
+</VirtualHost>

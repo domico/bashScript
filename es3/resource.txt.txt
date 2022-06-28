@@ -1,0 +1,7 @@
+---------------------- SSL Virtual Host -------------------------
+https://www.digitalocean.com/community/tutorials/how-to-create-an-ssl-certificate-on-apache-for-centos-7
+
+
+------- PXE SERVER -------
+https://www.lisenet.com/2021/install-and-configure-a-pxe-boot-server-for-kickstart-installation-on-centos/
+
