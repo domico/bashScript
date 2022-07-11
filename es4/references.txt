@@ -1,0 +1,37 @@
+------- Cluster ---------
+https://www.redhat.com/sysadmin/rhel-pacemaker-cluster
+
+https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_and_managing_high_availability_clusters/assembly_getting-started-with-pacemaker-configuring-and-managing-high-availability-clusters
+( possibile soluzione stonith-enabled)
+
+https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/configuring_the_red_hat_high_availability_add-on_with_pacemaker/ch-clustresources-haar#s1-resourcecreate-HAAR
+(resources creation)
+
+https://www.digitalocean.com/community/tutorials/how-to-set-up-an-apache-active-passive-cluster-using-pacemaker-on-centos-7
+(full guide)
+
+ADD WORDPRESS Site and share resource as in guide imediately above
+
+------ LAMP Installation -------
+https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-on-centos-7
+
+------ Galera installation ------------
+
+- https://www.digitalocean.com/community/tutorials/how-to-configure-a-galera-cluster-with-mariadb-on-centos-7-servers#step-4-configuring-the-remaining-nodes
+WARNING: segui la guida presente sopra ma i file di configurazione devono essere salvati,
+	 per tutti i noidi, nel path """"cat /etc/my.cnf.d/galera.cnf""""
+
+------ WORDPRESS Installation ------
+
+-- https://www.digitalocean.com/community/tutorials/how-to-install-wordpress-on-centos-7
+-- (php update) https://unihost.com/help/how-to-update-php-centos-7/
+
+
+------ WORDPRESS ON PACEMAKER -------
+
+- Resolve problem "/etc/httpd/conf/httpd.conf to come up"
+https://stackoverflow.com/questions/41414246/error-in-creating-ocfheatbeatapache-reource-using-peacemaker-in-centos-7-serve
+
+- Resolve controll access HTTPD "https://httpd.apache.org/docs/2.4/howto/access.html"
+
+- Resolve WORDPRESS ip.address static https://stackoverflow.com/questions/535534/wordpress-host-ip-changed
